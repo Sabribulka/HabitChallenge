@@ -1,0 +1,16 @@
+name: habitchallenge
+services:
+  sqlserver:                                          # ім'я сервісу всередині compose
+    image: mcr.microsoft.com/mssql/server:2022-latest # офіційний образ SQL Server 2022
+    platform: linux/amd64                             # образ тільки для x86, запускається через Rosetta
+    container_name: habitchallenge-sql                # ім'я, яке бачитимеш у Services і в docker ps
+    environment:
+      ACCEPT_EULA: "Y"                                # згода з ліцензією, без неї контейнер не стартує
+      MSSQL_SA_PASSWORD: "PipidroniBamboni23"          # пароль адміністратора sa
+    ports:
+      - "1433:1433"                                   # порт на Mac : порт у контейнері
+    volumes:
+      - sqlserver-data:/var/opt/mssql                 # тут SQL Server зберігає бази
+
+volumes:
+  sqlserver-data:                                     # іменований volume: дані переживуть видалення контейнера
