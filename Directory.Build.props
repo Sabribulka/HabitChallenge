@@ -1,0 +1,11 @@
+<Project>
+
+    <!-- Спільні налаштування для всіх проєктів solution: MSBuild підхоплює цей файл автоматично -->
+    <ItemGroup>
+        <!-- AutoMapper 14: DoS через глибоку рекурсію; у нас тільки плоскі DTO -->
+        <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-rvv3-g6hj-g44x" />
+        <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-gpwp-5797-mjff" />
+        <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-6vhm-j9h7-f9gh" />
+    </ItemGroup>
+
+</Project>
